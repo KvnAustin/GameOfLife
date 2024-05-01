@@ -1,0 +1,45 @@
+body {
+    color: #333;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    line-height: 1.6875;
+}
+
+h1, h2, h3, h4, h5, h6, strong, label {
+    font-weight: 600;
+}
+
+.main-container {
+    margin-top: 15px;
+}
+
+.row-game {
+    text-align: center;
+}
+
+    .row-game .col label {
+        margin-bottom: 25px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        display: block;
+        line-height: 1;
+        border: 1px solid #ccc;
+    }
+
+        .row-game .col input[type=checkbox] {
+            width: 25px;
+            height: 25px;
+        }
+
+.col-alive {
+    background: #198754;
+    border: 1px solid #16794c;
+    height: 25px;
+}
+
+.col-dead {
+    background: #dc3545;
+    border: 1px solid #d12435;
+    height: 25px;
+}

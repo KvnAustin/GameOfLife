@@ -1,0 +1,52 @@
+﻿@using GameOfLife.UI.ViewModels
+@model GameViewModel
+@{
+    ViewData["Title"] = "Game Page";
+}
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vehicula sapien vitae ipsum suscipit, non mollis enim vulputate. Donec placerat dapibus lorem vitae pulvinar. Donec dolor massa, semper vel mauris eget, pulvinar luctus sapien. In turpis neque, laoreet id congue feugiat, interdum et ante. Sed hendrerit ipsum tortor, id euismod ligula mattis nec. Donec nulla ipsum, fringilla nec luctus id, convallis quis massa. Curabitur consectetur libero at tempus hendrerit. Curabitur commodo, risus quis pulvinar lobortis, ligula tellus tempor mauris, eget feugiat quam eros id erat. Donec tincidunt ante id sapien maximus, eget mattis arcu sollicitudin. Duis iaculis sit amet lacus ultricies facilisis. In euismod lorem a neque rutrum feugiat.</p>
+
+@using (Html.BeginForm("Index", "Game", FormMethod.Post))
+{
+    Html.AntiForgeryToken();
+
+    for (var i = 0; i < 5; i++)
+    {
+        <div class="row row-game">
+            <div class="col">
+                <label>
+                    @Html.CheckBoxFor(x => Model.Input[i][0])
+                </label>
+            </div>
+            <div class="col">
+                <label>
+                    @Html.CheckBoxFor(x => Model.Input[i][1])
+                </label>
+            </div>
+            <div class="col">
+                <label>
+                    @Html.CheckBoxFor(x => Model.Input[i][2])
+                </label>
+            </div>
+            <div class="col">
+                <label>
+                    @Html.CheckBoxFor(x => Model.Input[i][3])
+                </label>
+            </div>
+            <div class="col">
+                <label>
+                    @Html.CheckBoxFor(x => Model.Input[i][4])
+                </label>
+            </div>
+        </div>
+    }
+
+    <div class="mb-3">
+        @Html.LabelFor(x => Model.NumberOfGenerations)
+        @Html.TextBoxFor(x => Model.NumberOfGenerations, new { @class = "form-control", type = "number", min = 1, max = 5 })
+        @Html.ValidationMessageFor(x => Model.NumberOfGenerations, string.Empty, new { @class = "text-danger" })
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-lg btn-primary">Play</button>
+    </div>
+}

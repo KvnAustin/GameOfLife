@@ -1,0 +1,38 @@
+﻿@using GameOfLife.UI.ViewModels
+@model IEnumerable<GameViewModel>
+@{
+    ViewData["Title"] = "History Page";
+}
+
+<div class="row">
+    <div class="col">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Number of Generations</th>
+                    <th>Created On</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    foreach (var game in Model)
+                    {
+                        <tr>
+                            <td><a asp-controller="Game" asp-action="History" asp-route-id="@game.Id" class="btn btn-sm btn-primary">View</a></td>
+                            <td>@game.Generations?.Count()</td>
+                            <td>@game.CreatedOn.ToShortDateString()</td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="3">No games have been played.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

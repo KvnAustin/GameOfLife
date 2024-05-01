@@ -1,0 +1,38 @@
+﻿@using GameOfLife.UI.ViewModels
+@model GameViewModel
+@{
+    ViewData["Title"] = "History Page";
+}
+
+<div class="row">
+    <div class="col">
+        <p><strong>Original Input</strong></p>
+    </div>
+</div>
+@for (var i = 0; i < 5; i++)
+{
+    <div class="row">
+        @for (var j = 0; j < 5; j++)
+        {
+            <div class="col @(Model.Input[i][j] ? "col-alive" : "col-dead")"></div>
+        }
+    </div>
+}
+
+@foreach (var generation in Model.Generations)
+{
+    <div class="row mt-3">
+        <div class="col">
+            <p><strong>Generation @generation.GenerationNum</strong></p>
+        </div>
+    </div>
+    @for (var i = 0; i < 5; i++)
+    {
+        <div class="row">
+            @for (var j = 0; j < 5; j++)
+            {
+                <div class="col @(generation.Value[i][j] ? "col-alive" : "col-dead")"></div>
+            }
+        </div>
+    }
+}
